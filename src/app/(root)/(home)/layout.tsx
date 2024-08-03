@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import { ReactNode } from "react"
 
 import Navbar from "@/components/Navbar"
 import Sidebar from "@/components/Sidebar"
