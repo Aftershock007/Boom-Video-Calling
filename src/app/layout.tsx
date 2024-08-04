@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs"
 import { Toaster } from "@/components/ui/toaster"
 import "@stream-io/video-react-sdk/dist/css/styles.css"
 import "react-datepicker/dist/react-datepicker.css"
+import { ReactNode } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -19,13 +20,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html lang="en">
       <ClerkProvider
         appearance={{
           layout: {
+            socialButtonsVariant: "iconButton",
             logoImageUrl: "/icons/boom-logo.svg"
           },
           variables: {
@@ -38,8 +40,8 @@ export default function RootLayout({
         }}
       >
         <body className={`${inter.className} bg-dark-2`}>
-          {children}
           <Toaster />
+          {children}
         </body>
       </ClerkProvider>
     </html>
