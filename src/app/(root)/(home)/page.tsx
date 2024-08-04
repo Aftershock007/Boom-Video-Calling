@@ -1,8 +1,8 @@
 "use client"
 
-import Loader from "@/components/Loader"
 import MeetingTypeList from "@/components/MeetingTypeList"
 import { useGetCalls } from "@/hooks/useGetCalls"
+import { Loader2 } from "lucide-react"
 
 export default function Home() {
   const now = new Date()
@@ -47,7 +47,7 @@ export default function Home() {
               Upcoming Meeting at: {upcomingMeetingTime}
             </h2>
           ) : (
-            <Loader />
+            <Loader2 />
           )}
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl font-extrabold lg:text-7xl">{time}</h1>
