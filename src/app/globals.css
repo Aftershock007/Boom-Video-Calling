@@ -63,6 +63,10 @@
   display: none;
 }
 
+.cl-socialButtonsIconButton {
+  background: linear-gradient(135deg, #252a41, #1e2757);
+}
+
 .cl-providerIcon__github {
   filter: invert(1);
 }
