@@ -6,7 +6,7 @@ export function useGetCalls() {
   const { user } = useUser()
   const client = useStreamVideoClient()
   const [calls, setCalls] = useState<Call[]>()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function loadCalls() {
@@ -16,7 +16,7 @@ export function useGetCalls() {
       setIsLoading(true)
       try {
         const { calls } = await client.queryCalls({
-          sort: [{ field: "starts_at", direction: -1 }],
+          sort: [{ field: "starts_at", direction: 1 }],
           filter_conditions: {
             starts_at: { $exists: true },
             $or: [

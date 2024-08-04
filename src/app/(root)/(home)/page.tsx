@@ -1,14 +1,26 @@
+"use client"
+
 import MeetingTypeList from "@/components/MeetingTypeList"
+import { useGetCalls } from "@/hooks/useGetCalls"
+import { Loader } from "lucide-react"
 
 export default function Home() {
   const now = new Date()
-  const time = now.toLocaleTimeString("en-IN", {
-    hour: "2-digit",
-    minute: "2-digit"
-  })
+  const time = now
+    .toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true
+    })
+    .replace(/am|pm/i, (match) => match.toUpperCase())
   const date = new Intl.DateTimeFormat("en-IN", { dateStyle: "full" }).format(
     now
   )
+
+  const { upcomingCalls, isLoading } = useGetCalls()
+
+  if (!isLoading && upcomingCalls)
+    console.log(upcomingCalls[0]?.state?.startsAt?.toLocaleString())
 
   return (
     <section className="flex size-full flex-col gap-10 text-white">
