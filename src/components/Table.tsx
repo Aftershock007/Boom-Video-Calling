@@ -1,10 +1,10 @@
 export default function Table({
   title,
   description
-}: {
+}: Readonly<{
   title: string
   description: string
-}) {
+}>) {
   return (
     <div className="flex flex-col items-start gap-2 xl:flex-row">
       <h1 className="text-base font-medium text-sky-1 lg:text-xl xl:min-w-32">

@@ -10,9 +10,9 @@ import { Button } from "./ui/button"
 
 export default function MeetingSetup({
   setIsSetupComplete
-}: {
+}: Readonly<{
   setIsSetupComplete: (value: boolean) => void
-}) {
+}>) {
   const [isMicCamToggledOn, setIsMicCamToggledOn] = useState(false)
 
   const call = useCall()
@@ -41,7 +41,7 @@ export default function MeetingSetup({
             type="checkbox"
             checked={isMicCamToggledOn}
             onChange={(e) => setIsMicCamToggledOn(e.target.checked)}
-          />
+          />{" "}
           Join with mic and camera off
         </label>
         <DeviceSettings />

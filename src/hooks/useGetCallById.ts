@@ -11,11 +11,12 @@ export function useGetCallById(id: string | string[]) {
 
   useEffect(() => {
     if (!client || !id) {
+      setIsCallLoading(false)
       return
     }
     const loadCall = async () => {
       try {
-        const { calls } = await client?.queryCalls({
+        const { calls } = await client.queryCalls({
           filter_conditions: { id }
         })
         if (calls && calls.length > 0) {

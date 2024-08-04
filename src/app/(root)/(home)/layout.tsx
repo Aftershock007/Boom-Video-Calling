@@ -11,7 +11,9 @@ export const metadata: Metadata = {
   }
 }
 
-export default function HomeLayout({ children }: { children: ReactNode }) {
+export default function HomeLayout({
+  children
+}: Readonly<{ children: ReactNode }>) {
   return (
     <main className="relative">
       <Navbar />

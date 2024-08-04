@@ -20,7 +20,7 @@ export default function Home() {
   const { upcomingCalls, isLoading } = useGetCalls()
   let upcomingMeetingTime = ""
 
-  if (!isLoading && upcomingCalls && upcomingCalls[0]?.state?.startsAt) {
+  if (!isLoading && upcomingCalls?.[0]?.state?.startsAt) {
     const startsAt = new Date(upcomingCalls[0].state.startsAt)
     const formattedDate = startsAt
       .toLocaleDateString("en-US", {
@@ -38,19 +38,25 @@ export default function Home() {
     upcomingMeetingTime = `${formattedDate}, ${formattedTime}`
   }
 
+  let content
+
+  if (upcomingMeetingTime) {
+    content = (
+      <h2 className="glassmorphism max-w-[28.5rem] rounded py-2 text-center text-base font-normal">
+        Upcoming Meeting at: {upcomingMeetingTime}
+      </h2>
+    )
+  } else if (upcomingCalls?.length === 0) {
+    content = <div className="max-w-[28.5rem]"></div>
+  } else {
+    content = <Loader2 />
+  }
+
   return (
     <section className="flex size-full flex-col gap-10 text-white">
       <div className="h-[300px] w-full rounded-[20px] bg-hero bg-cover">
         <div className="flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11">
-          {upcomingMeetingTime ? (
-            <h2 className="glassmorphism max-w-[28.5rem] rounded py-2 text-center text-base font-normal">
-              Upcoming Meeting at: {upcomingMeetingTime}
-            </h2>
-          ) : upcomingCalls?.length === 0 ? (
-            <div className="max-w-[28.5rem]"></div>
-          ) : (
-            <Loader2 />
-          )}
+          {content}
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl font-extrabold lg:text-7xl">{time}</h1>
             <p className="text-lg font-medium text-sky-1 lg:text-2xl">{date}</p>

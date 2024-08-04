@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children
+}: Readonly<{ children: ReactNode }>) {
   return (
     <main>
       <StreamVideoProvider>{children}</StreamVideoProvider>

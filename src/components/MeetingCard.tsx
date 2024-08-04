@@ -27,7 +27,7 @@ export default function MeetingCard({
   handleClick,
   link,
   buttonText
-}: MeetingCardProps) {
+}: Readonly<MeetingCardProps>) {
   const { toast } = useToast()
 
   return (
@@ -45,7 +45,7 @@ export default function MeetingCard({
         <div className="relative flex w-full max-sm:hidden">
           {avatarImages.map((img, index) => (
             <Image
-              key={index}
+              key={img}
               src={img}
               alt="attendees"
               width={40}

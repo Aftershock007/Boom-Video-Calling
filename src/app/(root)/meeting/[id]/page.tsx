@@ -11,7 +11,7 @@ import { useState } from "react"
 
 export default function MeetingPage() {
   const { id } = useParams()
-  const { user, isLoaded } = useUser()
+  const { isLoaded } = useUser()
   const { call, isCallLoading } = useGetCallById(id)
   const [isSetupComplete, setIsSetupComplete] = useState(false)
 

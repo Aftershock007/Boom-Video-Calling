@@ -10,9 +10,9 @@ const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY
 
 export default function StreamVideoProvider({
   children
-}: {
+}: Readonly<{
   children: ReactNode
-}) {
+}>) {
   const [videoClient, setVideoClient] = useState<StreamVideoClient>()
   const { user, isLoaded } = useUser()
 
@@ -28,7 +28,7 @@ export default function StreamVideoProvider({
       apiKey,
       user: {
         id: user?.id,
-        name: user?.username || user?.id,
+        name: user?.username ?? user?.id,
         image: user?.imageUrl
       },
       tokenProvider

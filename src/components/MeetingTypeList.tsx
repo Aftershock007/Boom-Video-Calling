@@ -110,7 +110,10 @@ export default function MeetingTypeList() {
           handleClick={createMeeting}
         >
           <div className="flex flex-col gap-2.5">
-            <label className="text-base font-normal leading-[22.4px] text-sky-2">
+            <label
+              htmlFor="description"
+              className="text-base font-normal leading-[22.4px] text-sky-2"
+            >
               Add a description
             </label>
             <Textarea
@@ -121,7 +124,10 @@ export default function MeetingTypeList() {
             />
           </div>
           <div className="flex w-full flex-col gap-2.5">
-            <label className="text-base font-normal leading-[22.4px] text-sky-2">
+            <label
+              htmlFor="dateTime"
+              className="text-base font-normal leading-[22.4px] text-sky-2"
+            >
               Select Date and Time
             </label>
             <ReactDatePicker

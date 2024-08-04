@@ -10,9 +10,9 @@ import { useToast } from "./ui/use-toast"
 
 export default function CallList({
   type
-}: {
+}: Readonly<{
   type: "ended" | "upcoming" | "recordings"
-}) {
+}>) {
   const router = useRouter()
   const { toast } = useToast()
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls()
@@ -70,26 +70,28 @@ export default function CallList({
   const calls = getCalls()
   const noCallsMessage = getNoCallsMessage()
 
+  const iconPaths = {
+    ended: "/icons/previous.svg",
+    upcoming: "/icons/upcoming.svg",
+    recordings: "/icons/recordings.svg"
+  }
+
+  const icon = iconPaths[type]
+
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       {calls && calls.length > 0 ? (
-        calls.map((meeting: Call | CallRecording, index) => (
+        calls.map((meeting: Call | CallRecording) => (
           <MeetingCard
-            key={index}
-            icon={
-              type === "ended"
-                ? "/icons/previous.svg"
-                : type === "upcoming"
-                ? "/icons/upcoming.svg"
-                : "/icons/recordings.svg"
-            }
+            key={(meeting as Call).id}
+            icon={icon}
             title={
               (meeting as Call).state?.custom?.description?.substring(0, 20) ||
               (meeting as CallRecording).filename?.substring(0, 20) ||
               "Personal Meeting"
             }
             date={
-              (meeting as Call).state?.startsAt?.toLocaleString() ||
+              (meeting as Call).state?.startsAt?.toLocaleString() ??
               (meeting as CallRecording).start_time?.toLocaleString()
             }
             isPreviousMeeting={type === "ended"}
