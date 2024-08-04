@@ -46,6 +46,8 @@ export default function Home() {
             <h2 className="glassmorphism max-w-[28.5rem] rounded py-2 text-center text-base font-normal">
               Upcoming Meeting at: {upcomingMeetingTime}
             </h2>
+          ) : upcomingCalls?.length === 0 ? (
+            <div className="max-w-[28.5rem]"></div>
           ) : (
             <Loader2 />
           )}
