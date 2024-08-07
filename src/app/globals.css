@@ -63,6 +63,30 @@
   display: none;
 }
 
+.cl-userButtonPopoverFooter {
+  display: none;
+}
+
+.cl-avatarImageActionsUpload {
+  background-color: white;
+  color: black;
+}
+
+.cl-avatarImageActionsUpload:hover {
+  background-color: #0e78f9;
+  color: white;
+}
+
+.cl-avatarImageActionsRemove {
+  background-color: #ff0000;
+  color: white;
+}
+
+.cl-avatarImageActionsRemove:hover {
+  background-color: #ff474c;
+  color: white;
+}
+
 .cl-socialButtonsIconButton {
   background: linear-gradient(135deg, #252a41, #1e2757);
 }
