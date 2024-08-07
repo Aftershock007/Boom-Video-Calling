@@ -27,11 +27,11 @@ const sidebarLinks = [
 ]
 
 const avatarImages = [
-  "/images/avatar-1.jpeg",
-  "/images/avatar-2.jpeg",
-  "/images/avatar-3.png",
-  "/images/avatar-4.png",
-  "/images/avatar-5.png"
+  "/images/avatar-1.webp",
+  "/images/avatar-2.webp",
+  "/images/avatar-3.webp",
+  "/images/avatar-4.webp",
+  "/images/avatar-5.webp"
 ]
 
 export { sidebarLinks, avatarImages }
